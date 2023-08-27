@@ -73,6 +73,18 @@
             showOnScreen(obj);
         }
 
+        window.addEventListener("DOMContentLoaded",()=>{
+                    axios.get("https://crudcrud.com/api/cdf8882beb1c41cfb9004b3ad230619d/appointmentData").then((res)=>{
+                        console.log(res);
+
+                        for(var i=0;i<res.data.length;i++){
+                            showOnScreen(res.data[i]);
+                        }
+                    }).catch((error)=>{
+                        console.log(error);
+                    })
+                });
+
         function showOnScreen(obj){
            let ul = document.querySelector("ul");
            let child = document.createElement("li");
