@@ -88,7 +88,7 @@
         function showOnScreen(obj){
            let ul = document.querySelector("ul");
            let child = document.createElement("li");
-           child.textContent = obj.Name + '--'+obj.Email + '--' + obj.Phone_No;
+           child.textContent = obj.Name +  '--'+obj.Email + '--' + obj.Phone_No;
            
 
            let delt = document.createElement('input'); 
@@ -103,7 +103,13 @@
 
            delt.onclick = () => {
             // localStorage.removeItem(obj.Email);
-            ul.removeChild(child);
+            axios.delete(`https://crudcrud.com/api/cdf8882beb1c41cfb9004b3ad230619d/appointmentData/${obj._id}`)
+            .then((res)=>{
+                ul.removeChild(child);
+            }).catch((err)=>{
+                console.log(err);
+            })
+            
          }
 
          edt.onclick = () => {
